@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/my_random_py.py",
-      "use": "@vercel/python"
+  "functions": {
+    "api/my_random_py.py": {
+      "runtime": "python@3.9"
     }
-  ],
+  },
   "routes": [
     { "src": "/.*", "dest": "/api/my_random_py.py" }
   ]
