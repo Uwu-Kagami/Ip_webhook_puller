@@ -1,124 +1,46 @@
-IP Logger - Webhook Discord
-Ce projet est un script Python qui enregistre les adresses IP et les informations de l'agent utilisateur (User-Agent) des visiteurs d'une application ou d'un site web. Lorsque ces informations sont collectées, elles sont envoyées à un webhook Discord pour permettre à l'administrateur de suivre les connexions en temps réel.
+<p align="center">
+  <img src="https://3684636823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAAWXLgBhsxb38Q3iF3ha%2Fsocialpreview%2FJYYwVSNx9yLnXY8adfAU%2Fbanner.png?alt=media&token=264b3ce3-6643-4b55-8990-ca5cd2516dce">
+</p>
 
-Fonctionnalités
-Enregistrement de l'IP et de l'User-Agent : Le script extrait l'adresse IP de l'utilisateur ainsi que son User-Agent depuis l'en-tête de la requête HTTP.
-Envoi à un Webhook Discord : Les informations collectées sont envoyées à un canal Discord via un webhook pour un suivi facile.
-Réponse HTTP : Le script renvoie une réponse JSON pour informer l'utilisateur que l'IP a bien été enregistrée.
-Prérequis
-Avant d'utiliser ce script, assurez-vous d'avoir installé les dépendances nécessaires :
+<h1 align="center">IP Logger - Discord Webhook</h1>
+<p align="center">
+  <a href="https://github.com/tonpseudo/YourRepoName/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-important">
+  </a>
+  <a href="https://github.com/tonpseudo">
+    <img src="https://img.shields.io/github/repo-size/tonpseudo/IP-Logger.svg?label=Repo%20size&style=flat-square">
+  </a>
+</p>
 
-Python 3.7 ou supérieur
-La bibliothèque requests pour envoyer des requêtes HTTP à Discord.
-Installation
-Clonez le projet ou téléchargez-le dans le répertoire de votre choix :
+This script is designed to log IP addresses and user-agent strings from incoming requests. When triggered, the script collects this data and sends it to a Discord webhook in a formatted message.
 
-bash
-Copier
-Modifier
-git clone https://github.com/ton-utilisateur/ton-projet.git
-Installez les dépendances : Assurez-vous d'avoir un environnement Python avec la bibliothèque requests installée. Utilisez pip pour installer les dépendances :
+---
 
-bash
-Copier
-Modifier
-pip install -r requirements.txt
-Configuration du webhook Discord :
+## Disclaimer
+This script is meant for educational purposes only. It should be used responsibly and within ethical guidelines. Make sure to obtain explicit consent from the users whose data you are collecting. Misuse of this script may be illegal and violate privacy rights.
 
-Créez un webhook dans le canal Discord où vous souhaitez recevoir les notifications (suivez ce guide Discord : Créer un Webhook).
-Copiez l'URL du webhook et remplacez la valeur de WEBHOOK_URL dans le script avec votre propre URL.
-python
-Copier
-Modifier
-WEBHOOK_URL = "votre_url_de_webhook"
-Comment ça marche
-Fonction principale : Le script écoute les requêtes HTTP. Lorsqu'une requête est reçue, il récupère les informations suivantes :
+---
 
-L'adresse IP de l'utilisateur (en utilisant l'en-tête x-forwarded-for).
-Le User-Agent de l'utilisateur (en utilisant l'en-tête user-agent).
-Envoi à Discord : Les informations sont envoyées à un webhook Discord. Le message envoyé à Discord contient l'IP et l'User-Agent du client. Un exemple de message envoyé :
+# Features
+- [x] **Logs IP addresses**: Collects the IP address of incoming requests.
+- [x] **Logs User-Agent**: Collects the User-Agent string from the incoming requests.
+- [x] **Sends Data to Discord**: Sends the collected data (IP address and User-Agent) to a configured Discord webhook.
+- [x] **Easy to Set Up**: Simple configuration via the `WEBHOOK_URL` variable for sending logs to Discord.
+- [x] **Error Handling**: Catches and reports errors with a 500 status code in case of failure.
 
-markdown
-Copier
-Modifier
-**Nouvelle IP détectée !**
-- **IP**: xxx.xxx.x.x
-- **User-Agent**: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
-Réponse HTTP : Une fois que l'IP et l'User-Agent sont envoyés à Discord, une réponse JSON est envoyée au client pour indiquer que l'IP a bien été enregistrée :
+---
 
-json
-Copier
-Modifier
-{
-  "message": "IP logged successfully."
-}
-Gestion des erreurs : Si une erreur se produit, comme un problème avec le webhook, une réponse d'erreur est renvoyée et un message d'erreur est également envoyé à Discord.
+### Requirements
+- Python 3.x
+- Required libraries:
+  - `requests` (for sending data to Discord)
+  - `flask` (for handling HTTP requests, if using Flask as a server)
+  - `fastapi` (if you prefer FastAPI instead of Flask)
+  - `python-dotenv` (for environment variable management)
 
-Exemple d'utilisation
-Pour tester ce script localement, vous pouvez exécuter un serveur Python avec Flask ou FastAPI, ou l'utiliser sur des plateformes comme Vercel pour déployer la fonction en ligne.
+**Note**: The required libraries will be automatically installed if they are not already present on the user's machine. This may take some time during the first execution as the missing modules are installed in the background.
 
-Exemple avec FastAPI (Local) :
-python
-Copier
-Modifier
-from fastapi import FastAPI
-from pydantic import BaseModel
-import requests
-import json
+Alternatively, you can manually install the required libraries using `pip`:
 
-app = FastAPI()
-
-WEBHOOK_URL = "votre_url_de_webhook"
-
-@app.post("/log-ip")
-async def log_ip(request: Request):
-    headers = request.headers
-    client_ip = headers.get('x-forwarded-for', 'IP not found')
-    user_agent = headers.get('user-agent', 'User-Agent not found')
-
-    requests.post(WEBHOOK_URL, json={
-        "username": "IP Logger",
-        "content": f"**Nouvelle IP détectée !**\n- **IP:** {client_ip}\n- **User-Agent:** {user_agent}"
-    })
-
-    return {"message": "IP logged successfully."}
-Exemple avec Vercel (Serveurless) :
-Déployez sur Vercel en suivant les étapes décrites précédemment.
-La fonction s'exécutera à chaque fois qu'une requête HTTP sera envoyée à l'URL de votre fonction déployée.
-Structure du projet
-Voici la structure du projet recommandée pour une utilisation avec Vercel :
-
-bash
-Copier
-Modifier
-├── api
-│   └── handler.py           # Script Python avec la logique du logger
-├── requirements.txt         # Liste des dépendances Python
-└── vercel.json              # Configuration pour déployer sur Vercel
-Fichier requirements.txt
-Ce fichier contient la liste des bibliothèques Python nécessaires à l'exécution du script.
-
-nginx
-Copier
-Modifier
-requests
-Déploiement sur Vercel
-Créez un compte sur Vercel.
-
-Connectez votre projet à Vercel en utilisant la commande suivante dans votre terminal :
-
-bash
-Copier
-Modifier
-vercel
-Déployez le projet :
-
-bash
-Copier
-Modifier
-vercel --prod
-Le webhook sera automatiquement appelé à chaque fois qu'une requête HTTP est envoyée à l'URL de votre fonction Vercel.
-
-Notes
-Ce script ne gère pas le cas où plusieurs adresses IP sont envoyées dans l'en-tête x-forwarded-for. Il ne prend que la première adresse IP de la liste.
-Le script est principalement conçu pour une utilisation en tant que fonction serverless sur des plateformes comme Vercel. Il peut être utilisé sur d'autres plateformes serverless, mais la configuration du déploiement peut différer.
+```bash
+pip install requests flask fastapi python-dotenv
