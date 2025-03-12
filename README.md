@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://3684636823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAAWXLgBhsxb38Q3iF3ha%2Fsocialpreview%2FJYYwVSNx9yLnXY8adfAU%2Fbanner.png?alt=media&token=264b3ce3-6643-4b55-8990-ca5cd2516dce">
+  <img src="https://raw.githubusercontent.com/Uwu-Kagami/logging_py/refs/heads/main/src/image/Q0c.gif">
 </p>
 
 <h1 align="center">IP Logger - Discord Webhook</h1>
