@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "functions": {
-    "api/ip_logger.py": {
-      "runtime": "python@3.9"
+  "builds": [
+    {
+      "src": "api/my_random_py.py",
+      "use": "@vercel/python"
     }
-  },
+  ],
   "routes": [
-    { "src": "/.*", "dest": "/api/ip_logger.py" }
+    { "src": "/.*", "dest": "/api/my_random_py.py" }
   ]
 }
