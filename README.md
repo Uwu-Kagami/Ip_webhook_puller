@@ -42,7 +42,7 @@ markdown
 Copier
 Modifier
 **Nouvelle IP détectée !**
-- **IP**: 192.168.1.1
+- **IP**: xxx.xxx.x.x
 - **User-Agent**: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
 Réponse HTTP : Une fois que l'IP et l'User-Agent sont envoyés à Discord, une réponse JSON est envoyée au client pour indiquer que l'IP a bien été enregistrée :
 
