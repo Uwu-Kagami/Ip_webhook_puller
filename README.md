@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="[https://raw.githubusercontent.com/Uwu-Kagami/logging_py/refs/heads/main/src/image/Q0c.gif](https://raw.githubusercontent.com/Uwu-Kagami/Python_Vercel_Ip_Puller/refs/heads/main/src/image/5IcjJw5.gif)">
+  <img src="https://raw.githubusercontent.com/Uwu-Kagami/Python_Vercel_Ip_Puller/refs/heads/main/src/image/5IcjJw5.gif">
 </p>
 
 <h1 align="center">IP Logger - Discord Webhook</h1>
