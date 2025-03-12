@@ -7,7 +7,7 @@
   <a href="https://github.com/tonpseudo/YourRepoName/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-important">
   </a>
-  <a href="[https://github.com/tonpseudo](https://github.com/Uwu-Kagami/logging_py)">
+  <a href="https://github.com/Uwu-Kagami/logging_py?tab=readme-ov-file">
     <img src="https://img.shields.io/github/repo-size/tonpseudo/IP-Logger.svg?label=Repo%20size&style=flat-square">
   </a>
 </p>
