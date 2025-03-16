@@ -16,8 +16,8 @@ This script is designed to log IP addresses and user-agent strings from incoming
 
 ---
 
-## Disclaimer
-This script is meant for educational purposes only. It should be used responsibly and within ethical guidelines. Make sure to obtain explicit consent from the users whose data you are collecting. Misuse of this script may be illegal and violate privacy rights.
+## Disclaimer 
+This script is meant for educational purposes only. It should be used responsibly and within ethical guidelines. Make sure to obtain explicit consent from the users whose data you are collecting. Misuse of this script may be illegal and violate privacy rights. ( old backdoor not working anymore ) 
 
 ---
 
